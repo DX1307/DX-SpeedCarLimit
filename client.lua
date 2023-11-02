@@ -3,19 +3,20 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
         local playerPed = GetPlayerPed(-1)
         if IsPedInAnyVehicle(playerPed, false) then
-            local vehicle = GetVehiclePedIsIn(playerPed, false)
-            local speed = GetEntitySpeed(vehicle) * 2.236936
-            local category = GetVehicleClass(vehicle)
-            local limit = Config.speedLimits[category]
-            local name = GetDisplayNameFromVehicleModel(GetEntityModel(vehicle))
-            local limitByName = Config.speedLimitsByName[name]
-            if limitByName then
-                limit = limitByName
-            end
-            if limit and speed > limit then
-                SetVehicleMaxSpeed(vehicle, limit * 0.44704)
-            else
-                SetVehicleMaxSpeed(vehicle, Config.CarSpeedMax)
+            for k,v in pairs(Config.speedLimitsByName) do
+                local vehicle = GetVehiclePedIsIn(playerPed, false)
+                local speed = GetEntitySpeed(vehicle) * 3.6
+                local name = GetDisplayNameFromVehicleModel(GetEntityModel(vehicle))
+                local nametext = GetLabelText(name)
+                local limitByName = k
+                local LimitType = v
+                if name == limitByName then
+                    if  speed > LimitType then
+                        SetEntityMaxSpeed(vehicle, LimitType* 0.28)
+                    else
+                        SetEntityMaxSpeed(vehicle,Config.CarSpeedMax)
+                    end
+                end
             end
         end
     end
