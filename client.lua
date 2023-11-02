@@ -20,14 +20,3 @@ Citizen.CreateThread(function()
         end
     end
 end)
-
-function GetVehicleClassFromName(name)
-    for k,v in pairs(Config.VehicleClasses) do
-        for i=1, #v.models do
-            if v.models[i] == name then
-                return k
-            end
-        end
-    end
-    return nil
-end
