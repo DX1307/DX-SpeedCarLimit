@@ -13,9 +13,9 @@ Citizen.CreateThread(function()
                 limit = limitByName
             end
             if limit and speed > limit then
-                SetEntityMaxSpeed(vehicle, limit * 0.44704)
+                SetVehicleMaxSpeed(vehicle, limit * 0.44704)
             else
-                SetEntityMaxSpeed(vehicle, Config.CarSpeedMax)
+                SetVehicleMaxSpeed(vehicle, Config.CarSpeedMax)
             end
         end
     end
