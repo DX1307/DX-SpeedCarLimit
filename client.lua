@@ -8,7 +8,7 @@ Citizen.CreateThread(function()
             local category = GetVehicleClass(vehicle)
             local limit = Config.speedLimits[category]
             local name = GetDisplayNameFromVehicleModel(GetEntityModel(vehicle))
-            local limitByName = speedLimitsByName[name]
+            local limitByName = Config.speedLimitsByName[name]
             if limitByName then
                 limit = limitByName
             end
