@@ -1,6 +1,6 @@
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        Wait(0)
         local playerPed = GetPlayerPed(-1)
         if IsPedInAnyVehicle(playerPed, false) then
             for k,v in pairs(Config.speedLimitsByName) do
